@@ -3,8 +3,8 @@
 ### Team
 
 * Tiarra Blandin
-* Daniel
-* Ryan
+* Daniel Schulenberg
+* Ryan Donnelly
 
 ## Overview
 

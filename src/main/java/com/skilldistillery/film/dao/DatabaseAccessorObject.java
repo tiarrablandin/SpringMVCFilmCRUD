@@ -341,7 +341,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			if (conn != null) {
 				try {
 					conn.rollback();
-				} catch (SQLException sqle2) {
+				} catch (SQLException sqle2) { 
 					System.err.println("Error trying to rollback");
 				}
 			}

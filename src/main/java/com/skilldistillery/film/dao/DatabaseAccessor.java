@@ -13,6 +13,7 @@ public interface DatabaseAccessor {
 		  public List<Film> findFilmByKeyWord(String key); 
 		  public Film createFilm(Film film); 
 		  public boolean deleteFilm(Film film);
+		  public Film editFilm(Film film);
 
 
 }

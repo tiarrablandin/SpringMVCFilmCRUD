@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.film.dao.DatabaseAccessor;
+import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
 @Controller
@@ -38,7 +39,15 @@ public class FilmController {
 
 	// Add code for adding new film
 	@RequestMapping(path = "AddFilm.do", params = "addFilm", method = RequestMethod.GET)
-	public ModelAndView addNewFilm(Film film) {
+	public ModelAndView addNewFilm(int id, String title, String description, String releaseYear, int languageID, int rentalDuration, double rentalRate, int length, double replacemntCost, String rating, String specialFeatures, String language, List<Actor> actorList) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("result");
+		return mv;
+	}
+	
+	// Add code for adding new film
+	@RequestMapping(path = "deleteFilm.do", params = "deleteFilm", method = RequestMethod.GET)
+	public ModelAndView deleteNewFilm(Film film) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("result");
 		return mv;

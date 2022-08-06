@@ -1,10 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Edit film</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Edit a Film</title>
 </head>
 <body>
-${film.title}
+	<h3>Edit a Film</h3>
+	<form action="editFilm.do" method="GET">
+		Title: <input type="text" id="title" name="editFilm" placeholder ="title" /> 
+		<br>
+		<br>
+		Description: <input type="text" id="description" name="addFilm" placeholder ="description"/> 
+		<br>
+		<br>
+		Release Year: <input type="text" id="releaseYear" name="addFilm" placeholder ="releaseYear" /> 
+		<br>
+		<br>
+		<section class="languageId">
+        <label for="languageId">Language ID:</label>
+        <select id="languageId" name="addFilm">
+          <option value=""></option>
+          <option value="1">1. English</option>
+          <option value="2">2. Italian</option>
+          <option value="3">3. Japanese</option>
+          <option value="4">4. Mandarin</option>
+          <option value="5">5. French</option>
+          <option value="6">6. German</option>
+        </select>
+      </section>
+		<br>
+		Rental Duration: <input type="text" id="rentalDuration" name="addFilm" placeholder ="rentalDuration"/> 
+		<br>
+		<br>
+		Rental Rate: <input type="text" id="rentalRate" name="addFilm" placeholder ="rentalRate"/> 
+		<br>
+		<br>
+		Length: <input type="text" id="length" name="addFilm" placeholder ="length"/> 
+		<br>
+		<br>
+		Replacement Cost: <input type="text" id="replacementCost" name="addFilm" placeholder ="replacementCost"/> 
+		<br>
+		<br>
+		Rating: <input type="text" id="rating" name="addFilm" placeholder ="rating"/> 
+		<br>
+		<br>
+		Special Features: <input type="text" id="specialFeatures" name="addFilm" placeholder ="specialFeatures"/> 
+		<br>
+		<br>
+		
+		<input type="submit"
+			value="Update" />
+	</form>
+	
+	<br />
+	<a href="editDeleteFilm.html">Delete Film</a>
+	<br />
+	
 </body>
 </html>

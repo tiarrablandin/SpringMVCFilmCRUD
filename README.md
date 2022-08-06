@@ -16,3 +16,7 @@
 * JDBC
 
 ## Lessons Learned
+
+* Learned how to utilize GitHub collaboration workflow
+* Learned how to resolve merge conflicts
+*

@@ -15,6 +15,7 @@
     crossorigin="anonymous">
 </head>
 <body>
+	<a href="index.html">Home</a>
 
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
@@ -48,6 +49,10 @@
       
       </tr>
       </table>
+      <a href="editDeleteFilm.html">Edit/Delete Film</a>
+      <br>
+      <br>
+      
     </c:forEach>
     </c:when>
     <c:otherwise>

@@ -36,7 +36,6 @@
         <li>Language: ${film.language}</li>
         <li>Category: ${film.category}</li>
         
-      </ul>
       Cast:
       <table>
       <tr>
@@ -45,10 +44,12 @@
       <td>
          ${actor.firstName } ${actor.lastName }, 
       </td>
+      </ul>
     </c:forEach>
       
       </tr>
       </table>
+      <br>
       <a href="editDeleteFilm.html">Edit/Delete Film</a>
     </c:when>
     <c:otherwise>

@@ -24,12 +24,12 @@
         <label for="languageId">Language ID:</label>
         <select id="languageId" name="languageID">
           <option value="1"></option>
-          <option value="1">1. English</option>
-          <option value="2">2. Italian</option>
-          <option value="3">3. Japanese</option>
-          <option value="4">4. Mandarin</option>
-          <option value="5">5. French</option>
-          <option value="6">6. German</option>
+          <option value="1">English</option>
+          <option value="2">Italian</option>
+          <option value="3">Japanese</option>
+          <option value="4">Mandarin</option>
+          <option value="5">French</option>
+          <option value="6">German</option>
         </select>
       </section>
 		<br>
@@ -45,14 +45,26 @@
 		Replacement Cost: <input type="text" id="replacementCost" name="replacementCost" placeholder ="replacementCost"/> 
 		<br>
 		<br>
-		Rating: <input type="text" id="rating" name="rating" placeholder ="rating"/> 
+		<!-- Rating: <input type="text" id="rating" name="rating" placeholder ="rating"/> --> 
+		
+		<section class="rating">
+        <label for="rating">Rating:</label>
+        <select id="rating" name="rating">
+          <option value=""></option>
+          <option value="G">G</option>
+          <option value="PG">PG</option>
+          <option value="PG13">PG13</option>
+          <option value="R">R</option>
+          <option value="NC17">NC17</option>
+        </select>
+      </section>
 		<br>
 		<br>
 		<!-- Special Features: <input type="text" id="specialFeatures" name="specialFeatures" placeholder ="specialFeatures"/>  -->
 		
-		<section class="languageId">
-        <label for="languageId">Language ID:</label>
-        <select id="languageId" name="languageID">
+		<section class="specialFeatures">
+        <label for="specialFeatures">Special Features:</label>
+        <select id="specialFeatures" name="specialFeatures">
           <option value=""></option>
           <option value="Trailers">Trailers</option>
           <option value="Commentaries">Commentaries</option>

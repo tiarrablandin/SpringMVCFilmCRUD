@@ -39,18 +39,19 @@ public class FilmController {
 
 	// Add code for adding new film
 	@RequestMapping(path = "AddFilm.do", params = "addFilm", method = RequestMethod.GET)
-	public ModelAndView addNewFilm(int id, String title, String description, String releaseYear, int languageID, int rentalDuration, double rentalRate, int length, double replacemntCost, String rating, String specialFeatures, String language, List<Actor> actorList) {
+	public ModelAndView addNewFilm(String title, int languae){
+		Film film = new Film(title,languae);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("result");
+		Film f = dao.createFilm(film);
+		mv.addObject("film", f);
+		mv.setViewName("results");
 		return mv;
 	}
 	
 	// Add code for adding new film
 	@RequestMapping(path = "deleteFilm.do", params = "deleteFilm", method = RequestMethod.GET)
 	public ModelAndView deleteNewFilm(Film film) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("result");
-		return mv;
-	}
 
+	}	
+	
 }

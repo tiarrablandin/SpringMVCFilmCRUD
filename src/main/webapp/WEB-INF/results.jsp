@@ -25,7 +25,11 @@
     <c:when test="${! empty film}">
     <c:forEach items="${film}" var="film">
       <ul>
-        <li>Title: <a href=""> ${film.title}</a></li>
+        <li>Title: <a href="editFilm.html?${film }"> ${film.title}</a></li>
+        <form name="theform" method="post">
+<input type="hidden" name="film" value="${film}">
+<input type="hidden" name="name" value="fred">
+</form>
         <li>Description: ${film.description}</li>
         <li>Release Year: ${film.releaseYear}</li>
         <li>Rating: ${film.rating}</li>

@@ -44,22 +44,10 @@ public class FilmController {
     	ModelAndView mv = new ModelAndView();
     	mv.setViewName("resultsSingle");
     	return mv;
-//    public ModelAndView addNewFilm(String id, String title, String description, String releaseYear, String languageId, String rentalDuration, String rentalRate, String length, String replacementCost, String rating, String specialFeatures, String language){
-//    	int langId = Integer.parseInt(languageId);
-//    	int rentDur = Integer.parseInt(rentalDuration);
-//    	double rentRate = Double.parseDouble(rentalRate);
-//    	int leng = Integer.parseInt(length);
-//    	double repCost = Double.parseDouble(replacementCost);
-//    	Film film = new Film(title, description, releaseYear, langId, rentDur, rentRate, leng, repCost, rating, specialFeatures);
-//        ModelAndView mv = new ModelAndView();
-//        Film f = dao.createFilm(film);
-//        mv.addObject("film", f);
-//        mv.setViewName("resultsSingle");
-//        return mv;
     }
     
     // Add code for delete film
-    @RequestMapping(path = "deleteFilm.do", params = "deleteFilm", method = RequestMethod.GET)
+    @RequestMapping(path = "deleteFilm.do", method = RequestMethod.GET)
     public ModelAndView deleteFilm(Film film) {
         ModelAndView mv = new ModelAndView();
         dao.deleteFilm(film);

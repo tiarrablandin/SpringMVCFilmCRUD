@@ -5,9 +5,27 @@
 <title>States</title>
 </head>
 <body>
-	<h3>States</h3>
+	<h3>Add a film</h3>
 	<form action="AddFilm.do" method="GET">
-		Add A Film: <input type="text" name="addFilm" /> <input type="submit"
+		Title: <input type="text" id="title" name="addFilm" placeholder ="title" /> 
+		<br>
+		<br>
+		Description: <input type="text" id="description" name="addFilm" placeholder ="description"/> 
+		<br>
+		<br>
+		Release Year: <input type="text" id="releaseYear" name="addFilm" placeholder ="releaseYear" /> 
+		<br>
+		<br>
+		Language id: <input type="text" id="languageID" name="addFilm" placeholder ="languageID" /> 
+		<br>
+		<br>
+		Rental Duration: <input type="text" id="rentalDuration" name="addFilm" placeholder ="rentalDuration"/> 
+		<br>
+		<br>
+		Rental Rate: <input type="text" id="rentalRate" name="addFilm" placeholder ="rentalRate"/> 
+		<br>
+		
+		<input type="submit"
 			value="Submit" />
 	</form>
 </body>

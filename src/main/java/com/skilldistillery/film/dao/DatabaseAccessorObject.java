@@ -193,6 +193,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				if (keys.next()) {
 					int newFilmId = keys.getInt(1);
 					film.setId(newFilmId);
+					System.out.println("******" + newFilmId);
 //					if (film.getActorList() != null && film.getActorList().size() > 0) {
 //						sql = "INSERT INTO film_actor (actor_id, film_id) VALUES (?,?)";
 //						stmt = conn.prepareStatement(sql);
@@ -217,7 +218,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 					System.err.println("Error trying to rollback");
 				}
 			}
-			throw new RuntimeException("Error inserting actor " + film);
+			throw new RuntimeException("Error inserting " + film);
 		}
 		return film;
 	}

@@ -23,7 +23,7 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		Film f = dao.findFilmById(id);
 		 mv.addObject("film", f);
-		mv.setViewName("results");
+		mv.setViewName("resultsSingle");
 		return mv;
 	}
 
@@ -33,7 +33,7 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		List<Film> f = dao.findFilmByKeyWord(keyword);
 		mv.addObject("film", f);
-		mv.setViewName("results");
+		mv.setViewName("resultsMulti");
 		return mv;
 	}
 
@@ -44,7 +44,7 @@ public class FilmController {
         ModelAndView mv = new ModelAndView();
         Film f = dao.createFilm(film);
         mv.addObject("film", f);
-        mv.setViewName("results");
+        mv.setViewName("resultsSingle");
         return mv;
     }
     
@@ -53,7 +53,7 @@ public class FilmController {
     public ModelAndView deleteFilm(Film film) {
         ModelAndView mv = new ModelAndView();
         dao.deleteFilm(film);
-        mv.setViewName("results");
+        mv.setViewName("resultsSingle");
         return mv;
     }    
     

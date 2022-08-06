@@ -33,6 +33,8 @@
         <li>Release Year: ${film.releaseYear}</li>
         <li>Rating: ${film.rating}</li>
         <li>Language: ${film.language}</li>
+        <li>Category: ${film.category}</li>
+        
       </ul>
       Cast:
       <table>

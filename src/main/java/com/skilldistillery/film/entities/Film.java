@@ -46,6 +46,7 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 		this.actorList = actorList;
 		this.category = category;
+		this.language = language;
 	}
 
 	public Film(int id, String title, String description, String releaseYear, int languageID, int rentalDuration,

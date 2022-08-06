@@ -31,7 +31,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		PreparedStatement pstmt = null;
 		ResultSet rs;
 		Film film = null;
-		String sql = "SELECT * FROM film f JOIN language l ON f.language_id = l.id WHERE f.id = ?";
+		String sql = "SELECT * FROM film   JOIN film_category ON film.id =  film_category.film_id JOIN category  ON film_category.category_id = category.id  JOIN language  ON film.language_id = language.id WHERE film.id = ?";
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			pstmt = conn.prepareStatement(sql);
@@ -50,10 +50,14 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				String rating = rs.getString("rating");
 				String specialFeatures = rs.getString("special_features");
 				List<Actor> actorList = findActorsByFilmId(filmId);
-				String language = rs.getString("name");
+				String language = rs.getString("language.name");
+				System.out.println(language);
+				String category = rs.getString("category.name");
+				System.out.println(category);
 
 				film = new Film(id, title, description, releaseYear, languageID, rentalDuration, rentalRate, length,
-						replacementCost, rating, specialFeatures, actorList, language);
+						replacementCost, rating, specialFeatures, actorList, language, category);
+				System.out.println(film);
 			}
 			conn.close();
 			pstmt.close();
@@ -127,7 +131,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		ResultSet rs;
 		List<Film> filmList = new ArrayList<>();
 		Film film = null;
-		String sql = "SELECT * FROM film f JOIN language l ON f.language_id = l.id WHERE title LIKE ? OR description LIKE ?";
+		String sql = "SELECT * FROM film   JOIN film_category ON film.id =  film_category.film_id JOIN category  ON film_category.category_id = category.id  JOIN language  ON film.language_id = language.id WHERE title LIKE ? OR description LIKE ?";
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			pstmt = conn.prepareStatement(sql);
@@ -147,10 +151,11 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				String rating = rs.getString("rating");
 				String specialFeatures = rs.getString("special_features");
 				List<Actor> actorList = new ArrayList<Actor>(findActorsByFilmId(id));
-				String language = rs.getString("name");
+				String language = rs.getString("language.name");
+				String category = rs.getString("category.name");
 
 				film = new Film(id, title, description, releaseYear, languageID, rentalDuration, rentalRate, length,
-						replacementCost, rating, specialFeatures, actorList, language);
+						replacementCost, rating, specialFeatures, actorList, language,category);
 				filmList.add(film);
 
 			}

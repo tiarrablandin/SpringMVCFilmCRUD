@@ -17,6 +17,52 @@ public class Film {
 	private String specialFeatures;
 	private List<Actor> actorList;
 	private String language;
+	private String category;
+
+	
+	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public Film(int id, String title, String description, String releaseYear, int languageID, int rentalDuration,
+			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
+			List<Actor> actorList, String language,String category) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.releaseYear = releaseYear;
+		this.languageID = languageID;
+		this.rentalDuration = rentalDuration;
+		this.rentalRate = rentalRate;
+		this.length = length;
+		this.replacementCost = replacementCost;
+		this.rating = rating;
+		this.specialFeatures = specialFeatures;
+		this.actorList = actorList;
+		this.category = category;
+	}
+
+	public Film(int id, String title, String description, String releaseYear, int languageID, int rentalDuration,
+			double rentalRate, int length, double replacementCost, String rating, String specialFeatures) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.releaseYear = releaseYear;
+		this.languageID = languageID;
+		this.rentalDuration = rentalDuration;
+		this.rentalRate = rentalRate;
+		this.length = length;
+		this.replacementCost = replacementCost;
+		this.rating = rating;
+		this.specialFeatures = specialFeatures;
+	}
 
 	public Film(int id, String title, String description, String releaseYear, int languageID, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,

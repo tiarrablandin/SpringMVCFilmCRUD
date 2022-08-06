@@ -39,8 +39,8 @@ public class FilmController {
 
 	// Add code for adding new film
 	@RequestMapping(path = "AddFilm.do", params = "addFilm", method = RequestMethod.GET)
-	public ModelAndView addNewFilm(int id, String title, String description, String releaseYear, int languageID, int rentalDuration, double rentalRate, int length, double replacementCost, String rating, String specialFeatures, String language, List<Actor> actorList){
-		Film film = new Film(title, language);
+	public ModelAndView addNewFilm(int id, String title, String description, String releaseYear, int languageID, int rentalDuration, double rentalRate, int length, double replacementCost, String rating, String specialFeatures, String language){
+		Film film = new Film(id, title, description, releaseYear, languageID, rentalDuration, rentalRate, length, replacementCost, rating, specialFeatures);
 		ModelAndView mv = new ModelAndView();
 		Film f = dao.createFilm(film);
 		mv.addObject("film", f);
@@ -48,10 +48,13 @@ public class FilmController {
 		return mv;
 	}
 	
-	// Add code for adding new film
+	// Add code for delete film
 	@RequestMapping(path = "deleteFilm.do", params = "deleteFilm", method = RequestMethod.GET)
-	public ModelAndView deleteNewFilm(Film film) {
-
+	public ModelAndView deleteFilm(Film film) {
+		ModelAndView mv = new ModelAndView();
+		dao.deleteFilm(film);
+		mv.setViewName("results");
+		return mv;
 	}	
 	
 }

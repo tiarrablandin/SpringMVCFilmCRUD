@@ -118,6 +118,10 @@ public class Film {
 		this.languageID =languageId;
 	}
 
+	public Film(String title2, String description2, String releaseYear2, int languageID2, int rentalDuration2,
+			double rentalRate2, int length2, double replacementCost2, String rating2, String specialFeatures2) {
+	}
+
 	public void display() {
 		System.out.println(
 				"Title: " + title + " Released: " + releaseYear + " Rating: " + rating + " Language: " + language);

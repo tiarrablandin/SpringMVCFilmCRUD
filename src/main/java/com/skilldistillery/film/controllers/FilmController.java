@@ -39,8 +39,13 @@ public class FilmController {
 
     // Add code for adding new film
     @RequestMapping(path = "AddFilm.do", params = "addFilm", method = RequestMethod.GET)
-    public ModelAndView addNewFilm(int id, String title, String description, String releaseYear, int languageID, int rentalDuration, double rentalRate, int length, double replacementCost, String rating, String specialFeatures, String language){
-        Film film = new Film(id, title, description, releaseYear, languageID, rentalDuration, rentalRate, length, replacementCost, rating, specialFeatures);
+    public ModelAndView addNewFilm(String id, String title, String description, String releaseYear, String languageID, String rentalDuration, String rentalRate, String length, String replacementCost, String rating, String specialFeatures, String language){
+    	Integer langId = Integer.parseInt(languageID);
+    	Integer rentDur = Integer.parseInt(rentalDuration);
+    	Double rentRate = Double.parseDouble(rentalRate);
+    	Integer leng = Integer.parseInt(length);
+    	Double repCost = Double.parseDouble(replacementCost);
+    	Film film = new Film(title, description, releaseYear, langId, rentDur, rentRate, leng, repCost, rating, specialFeatures);
         ModelAndView mv = new ModelAndView();
         Film f = dao.createFilm(film);
         mv.addObject("film", f);

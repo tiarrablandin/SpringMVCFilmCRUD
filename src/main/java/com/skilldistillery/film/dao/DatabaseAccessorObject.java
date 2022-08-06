@@ -174,25 +174,34 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
-			String sql = "INSERT INTO film (title, language_id) " + " VALUES (?,?)";
+			String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features) " 
+					   + " VALUES (?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, film.getTitle());
-			stmt.setInt(2, film.getLanguageID());
+			stmt.setString(2, film.getDescription());
+			stmt.setString(3, film.getReleaseYear());
+			stmt.setInt(4, film.getLanguageID());
+			stmt.setInt(5, film.getRentalDuration());
+			stmt.setDouble(6, film.getRentalRate());
+			stmt.setInt(7, film.getLength());
+			stmt.setDouble(8, film.getReplacementCost());
+			stmt.setString(9, film.getRating());
+			stmt.setString(10, film.getSpecialFeatures());
 			int updateCount = stmt.executeUpdate();
 			if (updateCount == 1) {
 				ResultSet keys = stmt.getGeneratedKeys();
 				if (keys.next()) {
 					int newFilmId = keys.getInt(1);
 					film.setId(newFilmId);
-					if (film.getActorList() != null && film.getActorList().size() > 0) {
-						sql = "INSERT INTO film_actor (actor_id, film_id) VALUES (?,?)";
-						stmt = conn.prepareStatement(sql);
-						for (Actor actor : film.getActorList()) {
-							stmt.setInt(1, actor.getId());
-							stmt.setInt(2, newFilmId);
-							updateCount = stmt.executeUpdate();
-						}
-					}
+//					if (film.getActorList() != null && film.getActorList().size() > 0) {
+//						sql = "INSERT INTO film_actor (actor_id, film_id) VALUES (?,?)";
+//						stmt = conn.prepareStatement(sql);
+//						for (Actor actor : film.getActorList()) {
+//							stmt.setInt(1, actor.getId());
+//							stmt.setInt(2, newFilmId);
+//							updateCount = stmt.executeUpdate();
+//						}
+//					}
 				}
 				System.out.println(film);
 			} else {

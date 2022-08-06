@@ -194,21 +194,24 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 					int newFilmId = keys.getInt(1);
 					film.setId(newFilmId);
 					System.out.println("******" + newFilmId);
-//					if (film.getActorList() != null && film.getActorList().size() > 0) {
-//						sql = "INSERT INTO film_actor (actor_id, film_id) VALUES (?,?)";
-//						stmt = conn.prepareStatement(sql);
-//						for (Actor actor : film.getActorList()) {
-//							stmt.setInt(1, actor.getId());
-//							stmt.setInt(2, newFilmId);
-//							updateCount = stmt.executeUpdate();
-//						}
-//					}
+					if (film.getActorList() != null && film.getActorList().size() > 0) {
+						sql = "INSERT INTO film_actor (actor_id, film_id) VALUES (?,?)";
+						stmt = conn.prepareStatement(sql);
+						for (Actor actor : film.getActorList()) {
+							stmt.setInt(1, actor.getId());
+							stmt.setInt(2, newFilmId);
+							updateCount = stmt.executeUpdate();
+						}
+					}
 				}
 				System.out.println(film);
 			} else {
 				film = null;
+				System.out.println("*************NULL**************");
 			}
 			conn.commit();
+			conn.close();
+			stmt.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
@@ -262,6 +265,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				film = null;
 			}
 			conn.commit();
+			conn.close();
+			stmt.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
@@ -329,12 +334,14 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			int updateCount = stmt.executeUpdate();
 			conn.commit();
 			System.out.println(updateCount + " Films deleted TITLE: " + film.getTitle());
+			conn.close();
+			stmt.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
 				try {
 					conn.rollback();
-				} catch (SQLException sqle2) {
+				} catch (SQLException sqle2) { 
 					System.err.println("Error trying to rollback");
 				}
 			}

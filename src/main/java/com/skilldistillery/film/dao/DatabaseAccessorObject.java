@@ -239,6 +239,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 	public Film editFilm(Film film) {
 		Connection conn = null;
+		ResultSet keyList;
+		int categoryId = 0;
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
@@ -276,6 +278,20 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			} else {
 				film = null;
 			}
+
+			String sql2 = "SELECT id FROM category WHERE name = ?";
+			stmt = conn.prepareStatement(sql2);
+			stmt.setString(1, film.getCategory());
+			keyList = stmt.executeQuery();
+			if (keyList.next()) {
+				categoryId = keyList.getInt("id");
+			}
+			String sql3 = "UPDATE film_category SET category_id = ? WHERE film_id = ?";
+			stmt = conn.prepareStatement(sql3);
+			stmt.setInt(1, categoryId);
+			stmt.setInt(2, film.getId());
+			stmt.executeUpdate();
+
 			conn.commit();
 			conn.close();
 			stmt.close();

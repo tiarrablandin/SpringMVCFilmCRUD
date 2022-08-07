@@ -48,6 +48,16 @@ public class FilmController {
     	return mv;
     }
     
+    @RequestMapping(path = "editFilm.do", method = RequestMethod.GET)
+    public ModelAndView editFilm(Film film) {
+    	System.out.println("************"+film);
+    	Film editFilm = dao.editFilm(film); 
+    	ModelAndView mv = new ModelAndView();
+    	mv.addObject("film", editFilm);
+    	mv.setViewName("resultsSingle");
+    	return mv;
+    }
+    
     // Add code for delete film
     @RequestMapping(path = "deleteFilm.do", method = RequestMethod.GET)
     public ModelAndView deleteFilm(Film film) {

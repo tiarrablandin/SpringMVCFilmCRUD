@@ -27,6 +27,7 @@
       <ul>
         <li>Title: <a href="editFilm.html?${film }"> ${film.title}</a></li>
         <form name="theform" method="post">
+        
 <input type="hidden" name="film" value="${film}">
 <input type="hidden" name="name" value="fred">
 </form>

@@ -25,49 +25,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 	}
 
-	@Override
-	public Film findFilmById(int filmId) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs;
-		Film film = null;
-		String sql = "SELECT * FROM film   JOIN film_category ON film.id =  film_category.film_id JOIN category  ON film_category.category_id = category.id  JOIN language  ON film.language_id = language.id WHERE film.id = ?";
-		try {
-			conn = DriverManager.getConnection(URL, user, pass);
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, filmId);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				int id = rs.getInt("id");
-				String title = rs.getString("title");
-				String description = rs.getString("description");
-				String releaseYear = rs.getString("release_year");
-				int languageID = rs.getInt("language_id");
-				int rentalDuration = rs.getInt("rental_duration");
-				double rentalRate = rs.getDouble("rental_rate");
-				int length = rs.getInt("length");
-				double replacementCost = rs.getDouble("replacement_cost");
-				String rating = rs.getString("rating");
-				String specialFeatures = rs.getString("special_features");
-				List<Actor> actorList = findActorsByFilmId(filmId);
-				String language = rs.getString("language.name");
-				System.out.println(language);
-				String category = rs.getString("category.name");
-				System.out.println(category);
-
-				film = new Film(id, title, description, releaseYear, languageID, rentalDuration, rentalRate, length,
-						replacementCost, rating, specialFeatures, actorList, language, category);
-				System.out.println(film);
-			}
-			conn.close();
-			pstmt.close();
-			rs.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return film;
-	}
-
+	
 	@Override
 	public Actor findActorById(int actorId) {
 		Connection conn = null;
@@ -189,6 +147,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setString(10, film.getSpecialFeatures());
 			int updateCount = stmt.executeUpdate();
 			if (updateCount == 1) {
+				conn.commit();
 				ResultSet keys = stmt.getGeneratedKeys();
 				if (keys.next()) {
 					int newFilmId = keys.getInt(1);
@@ -349,4 +308,48 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 		return true;
 	}
+	@Override
+	public Film findFilmById(int filmId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs;
+		Film film = null;
+		String sql = "SELECT * FROM film   JOIN film_category ON film.id =  film_category.film_id JOIN category  ON film_category.category_id = category.id  JOIN language  ON film.language_id = language.id WHERE film.id = ?";
+		try {
+			conn = DriverManager.getConnection(URL, user, pass);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, filmId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				int id = rs.getInt("id");
+				String title = rs.getString("title");
+				String description = rs.getString("description");
+				String releaseYear = rs.getString("release_year");
+				int languageID = rs.getInt("language_id");
+				int rentalDuration = rs.getInt("rental_duration");
+				double rentalRate = rs.getDouble("rental_rate");
+				int length = rs.getInt("length");
+				double replacementCost = rs.getDouble("replacement_cost");
+				String rating = rs.getString("rating");
+				String specialFeatures = rs.getString("special_features");
+				List<Actor> actorList = findActorsByFilmId(filmId);
+				String language = rs.getString("language.name");
+				System.out.println(language);
+				String category = rs.getString("category.name");
+				System.out.println(category);
+				film = new Film(id, title, description, releaseYear, languageID, rentalDuration, rentalRate, length,
+						replacementCost, rating, specialFeatures, actorList, language, category);
+				System.out.println(film);
+				return film;
+			}
+			conn.close();
+			pstmt.close();
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println(film);
+		return film;
+	}
+
 }

@@ -60,9 +60,10 @@ public class FilmController {
     
     // Add code for delete film
     @RequestMapping(path = "deleteFilm.do", method = RequestMethod.GET)
-    public ModelAndView deleteFilm(Film film) {
+    public ModelAndView deleteFilm(int id) {
         ModelAndView mv = new ModelAndView();
-        dao.deleteFilm(film);
+    	Film f = dao.findFilmById(id);
+        dao.deleteFilm(f);
         mv.setViewName("resultsSingle");
         return mv;
     }    

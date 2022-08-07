@@ -255,7 +255,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
-			stmt.setInt(10, film.getId());
+			stmt.setInt(11, film.getId());
 			int updateCount = stmt.executeUpdate();
 			if (updateCount == 1) {
 				ResultSet keys = stmt.getGeneratedKeys();

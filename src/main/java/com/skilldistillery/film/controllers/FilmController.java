@@ -63,7 +63,7 @@ public class FilmController {
     	Film editFilm = dao.editFilm(film); 
     	ModelAndView mv = new ModelAndView();
     	mv.addObject("film", editFilm);
-    	mv.setViewName("edit");
+    	mv.setViewName("resultsSingle");
     	return mv;
     }
     

@@ -51,7 +51,7 @@
       </tr>
       </table>
       <br>
-      <a href="editDeleteFilm.html">Edit/Delete Film</a>
+      <a href=editDeleteFilm.html>Edit/Delete Film</a>
     </c:when>
     <c:otherwise>
       <p>No film found</p>

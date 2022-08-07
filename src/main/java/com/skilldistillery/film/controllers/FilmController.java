@@ -48,13 +48,22 @@ public class FilmController {
     	return mv;
     }
     
+    @RequestMapping(path = "editDisplay.do", method = RequestMethod.GET)
+    public ModelAndView editDisplay(Film film) {
+    	System.out.println("************5"+film);
+    	Film editFilm = dao.findFilmById(film.getId()); 
+    	ModelAndView mv = new ModelAndView();
+    	mv.addObject("film", editFilm);
+    	mv.setViewName("edit");
+    	return mv;
+    }
     @RequestMapping(path = "editFilm.do", method = RequestMethod.GET)
     public ModelAndView editFilm(Film film) {
-    	System.out.println("************"+film);
+    	System.out.println("************6"+film);
     	Film editFilm = dao.editFilm(film); 
     	ModelAndView mv = new ModelAndView();
     	mv.addObject("film", editFilm);
-    	mv.setViewName("resultsSingle");
+    	mv.setViewName("edit");
     	return mv;
     }
     

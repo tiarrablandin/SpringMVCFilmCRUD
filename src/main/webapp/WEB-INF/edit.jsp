@@ -119,7 +119,12 @@
 		
 		<input type="submit"
 			value="Update" />
+			
 	</form>
+	<form action="deleteFilm.do" method="GET">
+	<input type ="hidden" id="id" name="id" value="${film.id }">
+		<input type="submit"
+			value="Delete" />
     </c:when>
     <c:otherwise>
       <p>No film found</p>

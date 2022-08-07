@@ -28,7 +28,7 @@
 			<c:forEach items="${film}" var="film">
 			
 				<ul>
-					<li>Title: <a href="editFilm.html?${film }"> ${film.title}</a></li>
+					<li>Title: ${film.title}</li>
 			        <form action="editDisplay.do" method="GET">
 <input type="hidden" name="id" value="${film.id}">
 <input type="hidden" name="title" value="${film.title}">
@@ -60,9 +60,8 @@
 							</tr>
 						</table>
 						
-      <input type=submit value=edit>
-						 <br> <a href="editDeleteFilm.html">Edit/Delete Film</a> <br>
-						<br>
+      <input type=submit value=edit/delete>
+						 
 				</ul>
 			</c:forEach>
 		</c:when>

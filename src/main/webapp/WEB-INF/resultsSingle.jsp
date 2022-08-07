@@ -25,7 +25,7 @@
           <c:choose>
     <c:when test="${! empty film}">
       <ul>
-        <li>Title: <a href="editFilm.html?${film }"> ${film.title}</a></li>
+        <li>Title: ${film.title}</li>
         <form action="editDisplay.do" method="GET">
         
 <input type="hidden" name="id" value="${film.id}">
@@ -61,8 +61,8 @@
       </tr>
       </table>
       <br>
-      <input type=submit value=edit>
-      <a href=editDeleteFilm.html>Edit/Delete Film</a>
+      <input type=submit value=edit/delete>
+
 </form>
     </c:when>
     <c:otherwise>

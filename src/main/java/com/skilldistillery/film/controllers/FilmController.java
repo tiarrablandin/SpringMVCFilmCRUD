@@ -20,6 +20,7 @@ public class FilmController {
 	// Add code using filmID
 	@RequestMapping(path = "GetFilmId.do", params = "id", method = RequestMethod.GET)
 	public ModelAndView searchByFilmId(int id) {
+		System.out.println("***********id" + id);
 		ModelAndView mv = new ModelAndView();
 		Film f = dao.findFilmById(id);
 		 mv.addObject("film", f);
@@ -40,8 +41,9 @@ public class FilmController {
     // Add code for adding new film
     @RequestMapping(path = "AddFilm.do", method = RequestMethod.GET)
     public ModelAndView addFilm(Film film) {
-    	film = dao.createFilm(film); 
+    	Film newFilm = dao.createFilm(film); 
     	ModelAndView mv = new ModelAndView();
+    	mv.addObject("film", newFilm);
     	mv.setViewName("resultsSingle");
     	return mv;
     }

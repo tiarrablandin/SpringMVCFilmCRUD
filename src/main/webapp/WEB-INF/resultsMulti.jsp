@@ -26,12 +26,24 @@
 	<c:choose>
 		<c:when test="${! empty film}">
 			<c:forEach items="${film}" var="film">
+			
 				<ul>
 					<li>Title: <a href="editFilm.html?${film }"> ${film.title}</a></li>
-					<form name="theform" method="post">
-						<input type="hidden" name="film" value="${film}"> <input
-							type="hidden" name="name" value="fred">
-					</form>
+			        <form action="editDisplay.do" method="GET">
+<input type="hidden" name="id" value="${film.id}">
+<input type="hidden" name="title" value="${film.title}">
+<input type="hidden" name=description value="${film.description}">
+<input type="hidden" name="releaseYear" value="${film.releaseYear}">
+<input type="hidden" name="languageID" value="${film.languageID}">
+<input type="hidden" name="rentalDuration" value="${film.rentalDuration}">
+<input type="hidden" name="rentalRate" value="${film.rentalRate}">
+<input type="hidden" name="length" value="${film.length}">
+<input type="hidden" name="replacementCost" value="${film.replacementCost}">
+<input type="hidden" name="rating" value="${film.rating}">
+<input type="hidden" name="specialFeatures" value="${film.specialFeatures}">
+<input type="hidden" name="language" value="${film.language}">
+<input type="hidden" name="category" value="${film.category}">
+        
 					<li>Description: ${film.description}</li>
 					<li>Release Year: ${film.releaseYear}</li>
 					<li>Rating: ${film.rating}</li>
@@ -46,7 +58,10 @@
 								</c:forEach>
 
 							</tr>
-						</table> <br> <a href="editDeleteFilm.html">Edit/Delete Film</a> <br>
+						</table>
+						
+      <input type=submit value=edit>
+						 <br> <a href="editDeleteFilm.html">Edit/Delete Film</a> <br>
 						<br>
 				</ul>
 			</c:forEach>

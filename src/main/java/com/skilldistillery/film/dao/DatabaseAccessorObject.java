@@ -314,11 +314,20 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
-			String sql = "DELETE FROM film WHERE id = ?";
+			String sql = "DELETE FROM film_category WHERE film_id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, film.getId());
 			int updateCount = stmt.executeUpdate();
 			conn.commit();
+			
+			
+			String sql2 = "DELETE FROM film WHERE id = ?";
+			stmt = conn.prepareStatement(sql2);
+			stmt.setInt(1, film.getId());
+			conn.commit();
+			
+			
+			
 			System.out.println(updateCount + " Films deleted TITLE: " + film.getTitle());
 			conn.close();
 			stmt.close();

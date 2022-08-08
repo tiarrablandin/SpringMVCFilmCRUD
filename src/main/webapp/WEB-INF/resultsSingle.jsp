@@ -25,7 +25,6 @@
           <c:choose>
     <c:when test="${! empty film}">
       <ul>
-        <li>Title: ${film.title}</li>
         <form action="editDisplay.do" method="GET">
         
 <input type="hidden" name="id" value="${film.id}">
@@ -41,14 +40,20 @@
 <input type="hidden" name="specialFeatures" value="${film.specialFeatures}">
 <input type="hidden" name="language" value="${film.language}">
 <input type="hidden" name="category" value="${film.category}">
-        <li>Description: ${film.description}</li>
-        <li>Release Year: ${film.releaseYear}</li>
-        <li>Rating: ${film.rating}</li>
-        <li>Language: ${film.language}</li>
-        <li>Category: ${film.category}</li>
-        
-      Cast:
-      <table>
+			        <li>Film ID: ${film.id}</li>
+			        <li>Title: ${film.title}</li>
+					<li>Description: ${film.description}</li>
+					<li>Release Year: ${film.releaseYear}</li>
+					<li>Language ID: ${film.languageID}</li>
+					<li>Rental Duration: ${film.rentalDuration}</li>
+					<li>Rental Rate: ${film.rentalRate}</li>
+					<li>Length: ${film.length}</li>
+					<li>Replacement Cost: ${film.replacementCost}</li>
+					<li>Rating: ${film.rating}</li>
+					<li>Special Features: ${film.specialFeatures}</li>
+					<li>Language: ${film.language}</li>
+					<li>Category: ${film.category}</li>
+					<li>Cast:<table>
       <tr>
     
     <c:forEach items="${film.actorList}" var="actor">

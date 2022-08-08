@@ -19,6 +19,7 @@ This application allows the user to search through a database of films —using 
 
 ## Lessons Learned
 
-* Learned how to utilize GitHub collaboration workflow
-* Learned how to resolve merge conflicts
-* 
+* Learned how to utilize GitHub collaboration workflow.
+* Learned how to resolve merge conflicts.
+* Gained a better understanding of .jdc files.
+* Gained a better understanding of DAO's.
